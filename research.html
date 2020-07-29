@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Research</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="website about Small world networks">
+		<meta name="author" content="Zahra Shah">
+		<meta name="keywords" content="small world networks">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<link rel="stylesheet" type="text/css" href="styles2.css">
+	</head>
+
+	<body>
+
+		<header id="main-header">
+			<div class="container">
+				<h1>Amherst College</h1>
+				<h2>SURF Program 2020</h2>
+			</div>
+		</header>
+
+		<nav id="navbar">
+			<div class="container">
+				<ul>
+					<li><a class="button" href="index.html">Home</a></li>
+					<li><a class="button" href="research.html">Research</a></li>
+					<li><a class="button" href="simulations.html">Visualizations</a></li>	
+					<li><a class="button" href="about.html">Meet the Team</a></li>		
+				</ul>	
+			</div>
+		</nav>
+
+
+		<div class="big-box">
+			<section class="main">
+				<h2>THE BIG QUESTIONS</h2>
+				<ul>
+					<li>What makes a Small World Network (SWN)?</li>
+					<li>What is the sigma and omega indice?</li>
+					<li>How do the even and odd Laplacian compare to each other?</li>
+					<li>How do we visualize the diffusion of heat on SWN?</li>
+					<li>How do epidemics spread through different networks?</li>
+					<li>How would a Zombie Apocalypse look like in a SWN?</li>
+				</ul>
+			</section>
+			<aside class="sidebar">
+				<p>Interested in learning about the group's day-to-day discussions? Click on the link below to read the daily notes.</p>
+				<a href="dailynotes.pdf" class="button" target="_blank">Compiled daily notes</a>
+				<p>Learn about the programming backbone of this research project:</p>
+				<ul>
+					<li><a class="button" href="Anaconda.pdf" target="_blank">Get python on your computer</a></li>
+					<li><a class="button" href="LAcheatsheet.txt" target="_blank">Linear Algebra with python-cheatsheet</a></li>
+					<li><a class="button" href="https://networkx.github.io/documentation/stable/tutorial.html" target="_blank">Using Networkx on python</a></li>		
+				</ul>	
+			</aside>
+
+			<div class="clr"></div>
+
+			<div class="intro">
+				<h3>Dynamics on Small World Networks</h3>
+
+				<section id="text">
+					<p>In 1998, Duncan Watts and Steve Strogatz formulated a paper describing a special type of network called the "small world network". According to their research, in such networks the mean shortest distance between nodes increases sufficiently slowly as a function of the number of nodes in the network. Small worlds also have a very high clustering coefficient because they have many clusters.</p>
+					<p></p>
+
+					<p>Small world properties can be found in many real life phenomena such as neural networks in the brain, electric power grids, food webs and popular social networks like Facebook. As such they form an ensemble of robust and important networks and an interesting phenomenon to study. </p>
+				</section>
+				<aside id="image">
+					<img src="swn.jpg" width="400vw">
+				</aside>
+
+				<div class="clr"></div>
+
+				<div id="over">
+					<p>Wattz and Strogatz explained a rewiring process through which a regular lattice can be turned into a small world or a random network, by changing the probability, p, of rewiring edges. Most of our research centered on how SWN compare to random and regular networks.</p>	
+					<img src="increasingp.png" width="400vw">				
+				</div>
+				
+			</div>
+
+			<div class="collapse-box">
+				<img src="sigma.png" width="670vw">
+
+				<button type="button" class="collapsible">Omega and Sigma indices</button>
+
+				<div class="content">
+					<p>The smallworldness of a network can be determined by a small coefficient, sigma. To calculate this, the clustering coefficient and characteristic path length are compared to an equivalent random network of the same average degree. However, this indice performance suffers when the network is large. Thus, the omega indice is a better quantifier of smallworldness. To learn more, <a href="" target="_blank">click here.</a></p>
+				</div>
+			</div>
+
+			<div class="collapse-box">
+				<img src="scalefree.png" width="670vw">
+
+				<button type="button" class="collapsible">Scale-free and Spatial networks</button>
+
+				<div class="content">
+					<h4>Scale-free networks</h4>
+					<p>A scale-free network is a network whose degree distribution follows a power law, at least asymptotically. A scale-free network is described as any network whose degree distribution follows the power law where P(K) (the proportion of nodes in the network that are connected to k number of nodes) is proportional to k raised to the power of -y, where y > 1, usually between 2 and 3. Examples of scale-free networks are the world-wide web and electronic circuits.</p>
+					<p>Scale-free networks usually have large hubs, and as the network increases in size, the underlying structure of the network remains the same.</p>
+					<h4>Spatial Networks</h4>
+					<p>Spacial networks are networks in which the nodes and edges are arranged in space according to a certain metric. Examples include lattice graphs and random graphs. In this case, a graph with N nodes will have two nodes connected if the distance between them is smaller than a given value. Power grids and road maps are examples of real life spatial networks.</p>
+					<p><a href="scalefree.pdf" target="_blank">Read more</a> about scale-free and spatial networks.</p>
+				</div>
+			</div>
+
+			<div class="collapse-box">
+				<img src="heatdiffusion.png" width="670vw">
+
+				<button type="button" class="collapsible">Heat diffusion in Random and SWN</button>
+
+				<div class="content">
+					<h4>Average Temperature and Convergence time</h4>
+					<p>For small networks, the time taken to reach equilibrium is roughly the same if the initial temperature is concentrated on the periphery versus the center of the network.</p>
+					<p>To understand how long it takes for a network to reach equilibrium, we can find the difference between the largest and the smallest temperature in any given network. That way, even if the network has a disconnect, the temperature difference will still converge to some value. This is shown in figure for a network of 100 nodes, using both the even and odd laplacian. Read more, <a href="averagetemp.pdf" target="_blank">here.</a></p>
+
+				</div>
+			</div>
+
+			<div class="collapse-box">
+				<img src="modelling.png" width="670vw">
+
+				<button type="button" class="collapsible">Modelling epidemics on graphs</button>
+
+				<div class="content">
+					<p>There are three primary parameter that are taken into consideration when modelling epidemics using graphs.</p>
+					<ul>
+						<li>Contagion</li>
+						<li>Strategy</li>
+						<li>Topology</li>
+					</ul>
+
+					<p> Thus, different graphs respond differently to epidemics. Generally, the more well connected a graph is, the faster the spread of an epidemic. To read more about the different factors used to model epidemics on graphs, click <a href="modellingepi.pdf" target="_blank">here.</a></p>
+
+				</div>
+			</div>
+
+			<div class="collapse-box1">
+				<img src="SIR.png" width="670vw">
+
+				<button type="button" class="collapsible">The SIR model</button>
+				<div class="content">
+					<h4>Definiton</h4>
+					<p> An SIR model is an epidemiological model that computes the theoretical number of people infected  with  a  contagious  illness  in  a  closed  population  over  time.   One  of  the  simplest SIR models is the Kermack-McKendrick model. </p>
+					<h4>Assumptions of the Kermack-McKendrick model</h4>
+					<ul>
+						<li>Population size is fixed</li>
+						<li>Disease transmission is instantaneous</li>
+						<li>Homogenous population</li>
+						<li>Duration of infectivity synonymous with length of disease period</li>
+					</ul>
+					 <p>To learn more click <a href="SIR.pdf" target="_blank">here.</a> To see an SIR model on a SWN stocastichally, go to <a href="simulations.html" target="_blank">visualizations.</a></p>
+
+				</div>	
+			</div>
+
+			<div class="collapse-box2">
+				<img src="SIS.png" width="670vw">
+
+				<button type="button" class="collapsible">The SIS model</button>
+
+				<div class="content">
+					<h4>Definiton</h4>
+					<p>The SIS model assumes that the disease confers no long term / long lasting immunity for infected patients,which allows the disease to obtain a steady state. Infected patients, once recovered, return immediately to the susceptible population.</p>
+					 <p>More information can be found <a href="SIS.pdf" target="_blank">here.</a></p>
+
+				</div>
+			</div>
+
+			<div class="clr"></div>
+
+			<div class="collapse-box">
+				<img src="swnanalysis.png" width="670vw">
+
+				<button type="button" class="collapsible">Analyzing spread of disease in networks</button>
+
+				<div class="content">
+					<p>Since many of the graphs found in nature are small worlds, it is important to understand how epidemiology works on such networks, and how it compares to random networks.</p>
+
+					<p> We found that, keeping all else constant, increasing probability, p, of rewiring edges lead to a higher peak value of infections and less time to reach that peak value for small world networks. The same behavior was exhibited by random networks. To read more, click <a href="analysis.pdf" target="_blank">here.</a></p>
+
+				</div>
+			</div>
+
+			<div class="youtube">
+				<h3>3-min Flash Talk</h3>
+				<iframe src="https://www.youtube.com/embed/eKqRhSQN4uQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+				<h3>Summer 2020 REU Presentation</h3>
+				<iframe src="https://www.youtube.com/embed/bjWccIPMXaE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+
+		</div>
+
+		
+		<!-- 
+		<footer id="main-footer">
+			<p>Copyright &copy; 2020</p>	
+		</footer> 
+
+			<section class="text">
+					<p>Wattz and Strogatz explained a rewiring process through which a regular lattice can be turned into a small world or a random network, by changing the probability, p, of rewiring edges. Most of our research centered on how SWN compare to random and regular networks.</p>
+				</section>
+				<aside class="image">
+						<img src="increasingp.png" width="400px">
+				</aside>-->
+
+		<script>
+			var coll = document.getElementsByClassName("collapsible");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+  				coll[i].addEventListener("click", function() {
+    			this.classList.toggle("active");
+    			var content = this.nextElementSibling;
+    			if (content.style.display == "block") {
+      				content.style.display = "none";
+    			} else {
+      				content.style.display = "block";
+   		 		}
+  				});
+			}
+		</script>
+
+		<footer id="main-footer">
+			<p>Copyright &copy; Amherst College 2020</p>	
+		</footer>
+
+
+	</body>
+</html>

@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Jun 16 13:25:13 2020
+
+@author: malaikakironde
+"""
+#Created a program such that when a graph with a heat constant, k, an initial
+#state T_0 and time, t is inputted, the program will return the final state, 
+#T_t.
+
+import matplotlib.pyplot as plt
+import networkx as nx
+import numpy as np
+import scipy as sp
+
+def heat_eq (G,k,t,e0):
+    L= nx.laplacian_matrix(G).todense() #create laplacian
+    #print(L)
+    A= -k*t*L
+    
+    E=sp.linalg.expm(A) #create exponential of matrix
+    et= np.matmul(E,e0) #final state
+    
+    #Average temperature
+    Av_temp = np.matrix.mean(et)
+    print('Average Temperature(even):',Av_temp)
+    
+    return et
+
+def heateq_oddL(G,k,t,e2,I):
+    I_t = I.transpose()
+    
+    #Multiplying I_t by I/Find the odd laplacian
+    L = np.dot(I_t, I)
+    #print(L)
+    A= -k*t*L
+    
+    E=sp.linalg.expm(A) #create exponential of matrix
+    et= np.matmul(E,e2) #final state
+    
+    #Average temperature
+    Av_temp = np.matrix.mean(et)
+    print('Average Temperature(odd):',Av_temp)
+    
+    return et
+
+def main():
+
+    graph = input('Random or SWN? ').upper()
+    
+    if graph == 'RANDOM':
+        n = int(input('Enter the number of nodes: '))
+        m = int(input('Enter the number of edges: '))
+        G = nx.gnm_random_graph(n, m) 
+    
+    elif graph == 'SWN':
+        n = int(input('Enter the number of nodes in the graph: '))
+        k = int(input('Enter the number of nearest neighbors that each node is connected to in ring topology: '))
+        p = float(input('Enter the probabilty of rewiring each edge: '))
+        G = nx.watts_strogatz_graph(n, k, p)  
+        
+    nx.draw(G, with_labels=True, node_color=range(n),cmap=plt.cm.Reds)
+    plt.show()
+    I = nx.incidence_matrix(G, oriented=True).todense() #incidence matrix
+    
+
+    #Finding the inputs of the graph 
+    t = eval(input('Enter the time: '))
+    k = eval(input('What is the heat constant? '))
+    
+    #finding the matrix for the initial temperature #order is equal to number of nodes
+    e_vec = input("Enter the initial state as a vector, separated by';'(even laplacian) ")
+    e0 = np.mat(e_vec)
+    
+    #order is equal to the number of edges 
+    e2_vec = input("Enter the initial state as a vector, separated by';'(odd laplacian) ")
+    e2 = np.mat(e2_vec)
+
+    print(heat_eq(G,k,t,e0))
+    print(heateq_oddL(G, k, t, e2,I))
+    
+main()
+
+
+
+
+
+

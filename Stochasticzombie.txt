@@ -1,0 +1,224 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jul  3 00:59:11 2020
+
+@author: zahrashah
+"""
+
+
+import matplotlib.pyplot as plt
+import networkx as nx
+import random
+
+
+def create_SWN(n,k,p):
+    G = nx.Graph()
+    for i in range(n):
+        G.add_node(i, index=i, state=1, visited=False, color="green")
+    
+    H=nx.watts_strogatz_graph(n,k,p)   
+    G.add_edges_from(H.edges())
+ 
+    return G
+
+
+def get_neighbors(G, node):
+    #get the neighbors of the selected node
+    neighbors= list(G.neighbors(node["index"]))
+    return neighbors    
+
+def first_zombie(G,n):
+    
+    #choose a spot  at random
+    spot = int(random.random() * n)
+    c_m[spot] = "red"
+    s_m[spot]= -1
+    nx.draw(G,with_labels=True, node_color= c_m)
+    plt.show()
+    
+    return c_m, s_m
+
+
+def zombify(G,node):
+    index = node["index"]
+    c_m[index] = "red"
+    s_m[index]= -1
+    
+    
+def kill_zombie(G, node):
+    index = node["index"]
+    c_m[index] = "blue"
+    s_m[index]= 0
+    
+    
+def dead_into_zombie(G,node):
+    index = node["index"]
+    c_m[index] = "red"
+    s_m[index]= -1
+
+def human_die(G, node):
+    index = node["index"]
+    c_m[index] = "blue"
+    s_m[index]= 0
+    
+    
+
+def process(G, n, p_zombie, p_kill, p_ressurection, p_death):
+    for i in range(n):
+        state = s_m[i]
+        node= G.nodes()[i]
+           
+        if state == -1: #current node is a zombie
+            neighbors = get_neighbors(G, node)
+                
+            for n  in neighbors:
+                if s_m[n] == 1: # its a human neighbor
+                    if random.random() >= p_zombie: # zombie node dies
+                        kill_zombie(G, node)
+                        break
+                    else: 
+                        zombify(G,G.nodes()[n]) # zombie kills human neighbor
+                else:
+                    continue #its a zombie neighbor or dead neighbor
+                            
+        elif state ==0: #current node is dead
+                
+            if random.random() <= p_ressurection: # dead node rises again
+                dead_into_zombie(G,node)
+            else: #  dead node stays dead
+                continue
+                
+        else: #current node is a human
+                
+            if random.random() <= p_death: #human node dies of natural causes
+                human_die(G, node)
+                    
+            else: #human node stays alive to interact with its neighbors
+                neighbors = get_neighbors(G, node)
+                    
+                for n in neighbors:
+                    if s_m[n] == -1: # its a zombie neighbor
+                        if random.random() >= p_zombie : #human kills zombie neighbor
+                            kill_zombie(G, G.nodes()[n])
+                        else: #human dies at the hand of zombie neighbor
+                            zombify(G, node)
+                            break #once the human turns, the for loop ends because 
+                                    #it takes per unit time for the human to completely turn
+                                        #during which it can neither infect other humans nor kill a zombie
+                    else: #neighbor is another human or dead 
+                        continue       
+    return c_m, s_m
+
+def simulate(G, n, p_zombie, p_kill, p_ressurection, p_death, time):
+    t = 1
+    while t <= time:
+        c_m, s_m = process(G, n, p_zombie, p_kill, p_ressurection, p_death)
+        graph_title = "Graph at t =" + str(t)
+        plt.figure()
+        plt.title(graph_title)
+        nx.draw(G, with_labels= True, node_color=c_m)
+        plt.show()
+        
+        t+=1
+        
+        
+        
+        
+
+pZ = 0.7 # prob a zombie kills a human
+pK = 1 - pZ  # prob a human kills a zombie
+pR = 0.1 # prob that a dead individual ressurects into a zombie
+pD = 0.0001 # prob yhat a human dies of natural causes
+N = 100 # number of nodes in graph
+k = 6 #SWN neighbor parameter
+p = 0.4 #prob of rewiring for SWN
+
+
+c_m =[]
+s_m = []
+for i in range(N):  #set the initial color map and state map to all humans
+    c_m.append("green")
+    s_m.append(1)
+
+G = create_SWN(N, k, p) # create SWN
+
+#at time =0, a zombie is introduced
+    
+c_m, s_m= first_zombie(G,N)
+plt.figure()
+plt.title("Graph at t=0")
+nx.draw(G, with_labels= True, node_color=c_m)
+plt.show()
+
+# start the simulation
+
+simulate(G, N, pZ, pK, pR, pD, 100)
+
+   
+   
+                    
+                
+                            
+                
+                            
+                            
+                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    

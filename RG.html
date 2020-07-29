@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+
+body {
+  background-color: WhiteSmoke;
+  color:#555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+  line-height: 1.6em;
+  margin: 0;
+}
+
+.link {stroke: black;}
+
+.container {
+  width: 100%;
+  background-color: indigo;
+  margin: auto;
+  position: absolute;
+  top: 0px;
+}
+
+
+.container h1 {
+  color: white;
+  text-align: center;
+}
+
+.container h2 {
+  color: white;
+  text-align: center;
+
+}
+
+.container a {
+  position: absolute;
+  top: 10px;
+  color: white;
+  text-decoration: none;
+
+}
+
+a:hover {
+  color: coral;
+}
+
+.box {
+  background-color: Salmon;
+  min-height: 40vh;
+  width: 30%;
+  position: absolute;
+  top:260px;
+  right:60px;
+}
+
+.box #nodepara {
+  position: relative;
+
+}
+
+.box #nodeval {
+  position: relative;
+}
+
+.box #p-para {
+  position: relative;
+}
+
+.box #pval {
+  position: relative;
+}
+
+.box #output {
+  position: relative;
+
+}
+
+.box p {
+  color:white;
+  text-align: center;
+}
+
+.box textarea {
+  width: 40%;
+  left: 120px;
+}
+
+</style>
+
+<body>
+      <div class="box">
+        <p id="nodepara">Enter number of nodes here(max 50):</p>
+        <textarea id="nodeval"></textarea>
+
+        <p id="p-para">Enter probability here(any value between 0 and 1):</p>
+        <textarea id="pval"></textarea>
+
+        <p id="output">Click on the graph to create graph</p>
+      </div>
+
+      <div class="container">
+        <h1>Amherst College</h1>
+        <h2>Random Graph Generator- Erdos Renyi Model</h2>
+        <a href="simulations.html"> < Go back to Visualizations</a>
+      </div>
+
+</body>
+
+
+
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script>
+
+var width = 900, height = 900, colors = d3.scale.category20();
+
+var n = 50, // number of nodes
+    me = (n *(n-1))/2, //maximum number of edges
+    p =0.1, //probability 
+    e = me * p, // number of edges drawn
+    charge = -3000;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .on("mousedown", create);
+
+createinitial();
+
+function createinitial() {
+  svg.selectAll(".link, .node").remove();
+  randomGraph(n, e, charge);
+}
+
+function getval() {
+  var getn = document.getElementById("nodeval").value;
+  var getp = document.getElementById("pval").value;
+  n = parseInt(getn);
+  p = parseFloat(getp);
+  me = (n *(n-1))/2;
+  e = me * p;
+
+  return
+}
+
+
+
+function create () {
+  getval();
+  document.getElementById("output").innerHTML = "Created graph with " + n + " nodes and " + p + " probability ";
+  svg.selectAll(".link, .node").remove();
+  randomGraph(n, e, charge);
+}
+
+function randomGraph (n, e, charge) { //creates a random graph on n nodes and m links
+  var nodes = d3.range(n).map(Object),
+      list  = randomChoose(unorderedPairs(d3.range(n)), e),
+      links = list.map(function (a) { return {source: a[0], target: a[1]} });
+
+  var force = d3.layout.force()
+      .size([width, height])
+      .nodes(nodes)
+      .links(links)
+      .charge(charge)
+      .on("tick", tick)
+      .start();
+
+  var svgLinks = svg.selectAll(".link").data(links)
+    .enter().append("line")
+      .attr("class", "link");
+
+  var svgNodes = svg.selectAll(".node").data(nodes)
+    .enter().append("circle")
+      .attr("class", "node")
+      .attr("r", 3)
+      .style("fill", "white");
+
+  svgNodes.transition().duration(800)
+      .attr("r", function (d) { return 6 + 0.5 * d.weight})
+      .style("fill", function (d) { return colors(d.weight) });
+
+  svgLinks.transition().duration(800)
+      .style("stroke-width", 3);
+
+  function tick () {
+    svgNodes
+        .attr("cx", function(d) { return d.x })
+        .attr("cy", function(d) { return d.y });
+
+    svgLinks
+        .attr("x1", function(d) { return d.source.x })
+        .attr("y1", function(d) { return d.source.y })
+        .attr("x2", function(d) { return d.target.x })
+        .attr("y2", function(d) { return d.target.y });
+  }
+}
+
+function randomChoose (s, k) { // returns a random k element subset of s
+  var a = [], i = -1, j;
+  while (++i < k) {
+    j = Math.floor(Math.random() * s.length);
+    a.push(s.splice(j, 1)[0]);
+  };
+  return a;
+}
+
+function unorderedPairs (s) { // returns the list of all unordered pairs from s
+  var i = -1, a = [], j;
+  while (++i < s.length) {
+    j = i;
+    while (++j < s.length) a.push([s[i],s[j]])
+  };
+  return a;
+}
+
+</script>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Homepage</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="website about Small world networks">
+		<meta name="author" content="Zahra Shah">
+		<meta name="keywords" content="small world networks">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+
+	<body>
+		<div id="empty-box">	
+		
+		</div>
+
+		<div id="main-box">
+			<div class="controls">
+				<img id="up" src="up.png " alt="Submit Form" />
+			</div>
+
+			<div class="box">
+			</div>
+
+			<div class="controls">
+				<img id="down" src="down.png " alt="Submit Form" />
+			</div>
+		</div>
+
+		<div id="one">
+			<p style="font-size:4vw;">SMALL WORLD NETWORKS AND DYNAMICS ON GRAPHS</p>
+		</div>
+
+		<div id="two">
+			<h3>Project Overview</h3>
+			<p style="font-size:1.5vw;">We are surrounded by networks, including those of social, biological and physical nature. Some of these networks have a random behavior, however, the data that flows through them exhibits very special features. The objective of this project is to study a particular class, called small world networks, from a mathematical perspective, as well as their connections with dynamics, statistical analysis and physics.</p>
+			
+		</div>
+
+		<header id="main-header">
+			<div class="container">
+				<h1>Amherst College</h1>
+				<h2>SURF Program 2020</h2>
+			</div>
+		</header>
+
+		<nav id="navbar">
+			<div class="container">
+				<ul>
+					<li><a class="button" href="index.html">Home</a></li>
+					<li><a class="button" href="research.html">Research</a></li>
+					<li><a class="button" href="simulations.html">Visualizations</a></li>	
+					<li><a class="button" href="about.html">Meet the Team</a></li>
+				</ul>	
+			</div>
+		</nav>
+
+		
+
+		<footer id="main-footer">
+			<p>Copyright &copy; Amherst College 2020</p>	
+		</footer>
+
+	</body>
+</html>
+
+<script type="text/javascript">
+	
+	var down = document.getElementById("down");
+	var up = document.getElementById("up")
+	var one = document.getElementById("one");
+	var two = document.getElementById("two");
+
+	var onetran = one.style.transform;
+	var twotran = two.style.transform;
+	var sum1;
+	var sum2;
+
+	down.onclick = function() {
+		sum1 = onetran + "translateY(-400px)";
+		one.style.transform = sum1;
+
+		sum2 = twotran + "translateY(400px)";
+		two.style.transform = sum2;
+
+	}
+
+	up.onclick = function() {
+		sum2 = twotran + "translateY(0px)";
+		two.style.transform = sum2;
+
+		sum1 = onetran + "translateY(0px)";
+		one.style.transform = sum1;
+
+		
+
+	}
+
+
+
+
+</script>
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jun 29 04:03:47 2020
+
+@author: zahrashah
+"""
+
+import networkx as nx
+import EoN
+import matplotlib.pyplot as plt
+
+#add graph here
+G = nx.watts_strogatz_graph(100, 5, 0.9)
+nx_kwargs = {"with_labels":True} 
+
+#can choose different arguments, decide where the infection starts by adding arguments, or the fraction
+#of infected people, if nothing is given it is chosen at random
+sim = EoN.Gillespie_SIR(G,1, 0.1 , return_full_data=True)
+
+
+
+t=0.0
+while t < 40:
+    sim.display(time = t, **nx_kwargs)
+    plt.show()
+    t+=0.5
+    
+#plots the hierarchy tree to see  transmission between nodes 
+tree = sim.transmission_tree() 
+hierarchy_tree = EoN.hierarchy_pos(tree) 
+nx.draw(tree,hierarchy_tree, with_labels= True)
+plt.show()
+
+
+
+
+        
+
+   
+        
+        
+        
+        

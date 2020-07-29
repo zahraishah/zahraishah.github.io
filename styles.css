@@ -1,0 +1,297 @@
+/*common to all HTMLS */
+body {
+	background-color: #f4f4f4;
+	color:#555;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	line-height: 1.6em;
+	margin: 0;
+}
+
+.clr {
+	clear: both;
+}
+
+#empty-box {
+	min-height: 130px;
+	margin: 40px;
+}
+
+.container {
+	margin:auto;
+	overflow:hidden;
+
+
+}
+
+
+.container h1 {
+	text-align: center;
+	font-size: 60px;
+
+	
+}
+
+.container h2 {
+	text-align: center;
+	font-size: 40px;
+
+	
+	
+}
+
+#main-header {
+	background-color: indigo;
+	color:#fff;
+	overflow: hidden;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+
+
+	
+}
+
+#navbar {
+	background-color: #333;
+	color: white;
+	overflow: hidden;
+	width: 100%;
+	position: fixed;
+	top: 160px;
+	font-weight: normal;
+
+
+}
+
+#navbar ul {
+	margin-left: 480px;
+	padding: 0;
+	list-style: none;
+
+}
+
+#navbar li {
+	text-align: center;
+	padding:20px;
+	display: inline;
+}
+
+#navbar a {
+	color:#fff;
+	text-decoration: none;
+	font-size:18px;
+	padding-right: 15px;
+	text-align: center;
+}
+
+.button {
+	color:white;
+	border:none;
+}
+
+#navbar .container .button:hover {
+	color:coral;
+}
+
+
+/* CSS Styling for the home page */
+
+ #main-footer {
+ 	background:#333;
+ 	color:#fff;
+ 	text-align: center;
+ 	padding:15px;
+ }
+
+ #main-box {
+	background-image: url("star.jpg");
+	background-position: center top;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: 0px 400px 0px 0px;
+	min-height: 500px;
+}
+
+.controls{
+}
+
+.controls #up {
+	position: relative;
+	top:70px;
+	left: 700px;
+	width: 25px;
+	cursor: pointer;
+}
+
+.controls #down {
+	position: relative;
+	top: 120px;
+	left: 700px;
+	width: 25px;
+	cursor: pointer;
+}
+
+#main-box .box{
+	width: 50%;
+	margin:auto;
+	overflow:hidden;
+	background:rgba(75,0,130,0.7);
+	min-height: 300px;
+	position: relative;
+	top: 85px;
+
+}
+
+#one  {
+	width: 50%;
+	margin-left: 360px;
+	overflow:hidden;
+	transform: translateY(0px);
+	position: absolute;
+	top: 300px;
+	
+}
+
+#one p {
+	font-size: 380%;
+	line-height: 1.1em;
+	color: white;
+	padding: 20px 80px;
+	text-align: center;
+	margin: 30px;
+
+}
+
+#two {
+	width: 50%;
+	margin-left: 360px;
+	overflow:hidden;
+	transform: translateY(0px);
+	position: absolute;
+	top: -100px;
+}
+
+#two h3 {
+	font-size: 200%;
+	color: white;
+	padding: 20px 80px 0px 80px;
+	text-align: center;
+
+
+}
+
+#two p{
+	font-size: 130%;
+	line-height: 1.2em;
+	color: white;
+	padding: 0px 80px;
+	text-align: justify;
+	}
+
+
+
+
+/* CSS styling for contact us page */
+
+#big-box {
+	background-color: #f1f1f1;
+	margin-top: 100px;
+	background-position: center top;
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: 0px 400px 0px 0px;
+	min-height: 700px;
+}
+
+#big-box .container2 {
+	border-color: black;
+	border-style: solid;
+ 	border-width: 1px;
+	width:50%;
+	margin:auto;
+	overflow: hidden;
+	background:rgba(75,0,130,0.6);
+
+
+}
+
+
+#big-box .container2 img{
+	top: 10px;
+	float:left;
+	width:50%;
+	padding:30px;
+	box-sizing: border-box;
+	opacity: 1;
+
+}
+
+#big-box .container2 .bio {
+	float:left;
+	width:50%;
+	position: relative;
+	box-sizing: border-box;
+	opacity: 1;
+	font-size: 1vw;
+	text-align: justify;
+	padding: 30px;
+}
+
+
+#big-box .container2 .bio p{
+	line-height: 1.8em;
+	color: white;
+	text-align: justify;
+
+}
+
+#big-box .container2 .bio a{
+	text-decoration: none;
+	color: white;
+
+}
+
+#big-box .container2 .bio a:hover{
+	color: coral;
+
+}
+
+ }
+
+
+
+/* 
+#showcase {
+	background-image: url(howsmall.jpg);
+	background-position: center center;
+	min-height: 500px;
+	text-align: center;
+}
+
+#showcase h1 {
+	color:#fff;
+	font-size:50px;
+	line-height: 1.6em;
+	padding-top: 30px;
+
+}
+
+#main {
+	float:left;
+	width:70%;
+	padding:0 40px 0 0;
+	box-sizing: border-box;
+}
+
+#sidebar {
+	float:left;
+	margin-top:10px;
+	color:white;
+	width:30%;
+	box-sizing: border-box;
+}*/
+
+
+
+

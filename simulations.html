@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Visualizations</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="website about Small world networks">
+		<meta name="author" content="Zahra Shah">
+		<meta name="keywords" content="small world networks">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+		<link rel="stylesheet" type="text/css" href="styles2.css">
+	</head>
+
+	<body>
+		<div id="empty-box">	
+		
+		</div>
+		
+	<header id="main-header">
+			<div class="container">
+				<h1>Amherst College</h1>
+				<h2>SURF Program 2020</h2>
+			</div>
+		</header>
+
+		<nav id="navbar">
+			<div class="container">
+				<ul>
+					<li><a class="button" href="index.html">Home</a></li>
+					<li><a class="button" href="research.html">Research</a></li>
+					<li><a class="button" href="simulations.html">Visualizations</a></li>	
+					<li><a class="button" href="about.html">Meet the Team</a></li>		
+				</ul>	
+			</div>
+		</nav>
+
+		<div class="big-box">
+			
+			<div class="box">
+				<div id="heading">
+					<h4>Random Graphs</h4>
+				</div>
+
+				<section id="text">
+						<p> The ”Erdos- Renyi Model” describes two similar models for generating random graphs. 
+						<br>	
+						<br>
+						1. G(n,M)Model: This model takes two parameternandM.ndenotes the order of the graph andMdenotesthe size of the graph.  The model will randomly choose one graph from the all the possiblegraphs that satisfy these two parameters.
+						<br>
+						<br>
+						2. G(n,p)Model: This model takes two parameters.  Here,nis still the order of the graph, butprepresentsthe probability any edge is connected.</p>
+					</section>
+
+					<aside id="image">
+						<img src="SIR.png">
+					</aside>
+
+					<div class="clr"></div>
+
+					<p><a href="RG.html" target="_blank">Create your own Erdos-Renyi(N,p)random graph.</a></p>
+			</div>
+
+			<div class="box">
+				<div id="heading">
+					<h4>Graph Heat Equation</h4>
+				</div>
+
+				<section id="text">
+						<p>Both the even and odd laplacians can be used to solve the graph heat equation.
+							<br>
+							<br>
+							Get the code to create your own heatmaps on different networks. 
+							</p>
+						<p>
+							<a href="heatequation.txt" target="_blank">Code for solving graph heat equation</a>
+							<br>
+							<a href="Average_temperature.txt" target="_blank">Code for average temperature</a>
+						</p>
+					</section>
+
+					<aside id="image">
+						<img src="heatmapSWN.png">
+					</aside>
+
+					<div class="clr"></div>
+			</div>
+
+			<div class="box">
+				<div id="heading">
+					<h4>Simulating the SIR on a grid</h4>
+				</div>
+
+				<video controls>
+  					<source src="SIR2D.mp4" type="video/mp4">
+  						Your browser does not support HTML video.
+				</video>
+					<p>Different starting positions and sizes yield different spreads through the grid-like network.</p>
+					<p><a href="SIR2Danimation.txt" target="_blank">Try new simulations</a></p>	
+			</div>
+
+			<div class="box">
+				<div id="heading">
+					<h4>Stochastic simulation of SIR on a SWN</h4>
+				</div>
+
+				<img src="sirimages.png">
+					<p>The stochastic spread of disease in a SWN using SIR model</p>
+				<img src="hierpos.png">
+				<p>Hierarchy tree representing the spread of disease through nodes</p>
+
+				<p><a href="SIRimages.txt" target="_blank">Simulate different disease models on different graphs to see the spread and the hierarchy tree.</a></p>	
+			</div>
+
+			<div class="box">
+				<div id="heading">
+					<h4>Zombie Apocalypse</h4>
+				</div>
+
+				<video controls>
+  					<source src="zombie.mp4" type="video/mp4">
+  						Your browser does not support HTML video.
+				</video>
+					<p>As time progresses, the green nodes (susceptible) are infected by the red nodes (zombie). Over time, susceptibles also die from natural causes and turn into blue nodes.</p>
+					<p><a href="Stochasticzombie.txt" target="_blank">Try different simulations</a></p>	
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<footer id="main-footer">
+			<p>Copyright &copy; Amherst College 2020</p>	
+		</footer>
+
+	</body>
+</html>
